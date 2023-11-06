@@ -3,7 +3,7 @@
 }
 
 html {
-  background-color: #172627;
+  background-color: #0A2240;
   height: 100%;
   width: 100%;
 }
@@ -11,7 +11,7 @@ html {
 .header {
   font-size: 100px;
   flex: 70%;
-  background: #1B8D63;
+  background: #004B98;
   padding: 50px;
   color: white;
 }
@@ -25,7 +25,7 @@ html {
 
 .box select {
   border-radius: 30px;
-  background-color: #1B8D63;
+  background-color: #004B98;
   color: white;
   padding: 40px;
   width: 300px;
@@ -69,7 +69,7 @@ html {
 
 .box2 select {
   border-radius: 30px;
-  background-color: #1B8D63;
+  background-color: #004B98;
   color: white;
   padding: 40px;
   width: 300px;
@@ -112,7 +112,7 @@ html {
   width: 2px;
   height: 200%;
   background: transparent;
-  border-left: dotted 2px #1B8D63;
+  border-left: dotted 2px #004B98;
   transform: translateX(-50%);
 }
 
@@ -132,7 +132,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  background-color: #1B8D63;
+  background-color: #004B98;
   color: white;
   font-size: 20px;
   border-radius: 30px;
@@ -145,7 +145,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  background-color: #1B8D63;
+  background-color: #004B98;
   color: white;
   font-size: 20px;
   border-radius: 30px;
@@ -157,7 +157,7 @@ html {
   top: 15%;
   left: 20%;
   font-size: 25px;
-  color: black;
+  color: #0A2240;
 }
 
 .location {                
@@ -165,7 +165,7 @@ html {
   top: 40%;
   left: 20%;
   font-size: 25px;
-  color: black;
+  color: #0A2240;
 }
 
 .order {
@@ -174,10 +174,10 @@ html {
   top: 80%;
   left: 28%;
   display: inline-block;
-  background-color: #187a56;
+  background-color: #E1261C;
   text-decoration: none;
   padding: 20px 50px;
-  border: 3px solid #1B8D63;
+  border: 3px solid #E1261C;
   border-radius: 30px;
 }
 
@@ -188,13 +188,13 @@ html {
 @keyframes pulsate {
   0% {
     box-shadow:
-      0 0 55px #187a56,
+      0 0 55px #c72118,
       0 0 100px #fff;
   }
 
   100% {                          /* Added later to make sure the infinite animation would apply */
     box-shadow:
-      0 0 55px #187a56,
+      0 0 55px #c72118,
       0 0 100px #fff;
   }
 }
