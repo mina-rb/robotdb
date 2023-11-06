@@ -16,7 +16,7 @@ html {
   color: white;
 }
 
-.box {
+.box {                /* Both box commands create and update the selection form menu for product and location */
   position: absolute;
   top: 450px;
   left: 300px;
@@ -104,7 +104,7 @@ html {
   padding: 30px;
 }
 
-.line {
+.line {                             /* Cosmetically used to seperate space between selection and order confirmation */
   position: fixed;
   top: 20%;
   bottom: 0;
@@ -126,7 +126,7 @@ html {
   border-radius: 30px;
 }
 
-.selection1 {
+.selection1 {               /* Created boxes for selection 1 and 2, that will display on the side the selection you chose from the boxes for product and locatiom */
   position: absolute;
   top: 28%;
   left: 50%;
@@ -152,7 +152,7 @@ html {
   padding: 30px;
 }
 
-.product {
+.product {                         /* Displays product and location texts "You want to send: and "To:" */
   position: absolute;
   top: 15%;
   left: 20%;
@@ -160,7 +160,7 @@ html {
   color: black;
 }
 
-.location {
+.location {                
   position: absolute;
   top: 40%;
   left: 20%;
@@ -182,7 +182,7 @@ html {
 }
 
 .order:hover {
-  animation: pulsate 1s infinite;
+  animation: pulsate 1s infinite;   /* The purpose of infinite is to ensure the glowing animation does not fade out during hover */
 }
 
 @keyframes pulsate {
@@ -192,7 +192,7 @@ html {
       0 0 100px #fff;
   }
 
-  100% {
+  100% {                          /* Added later to make sure the infinite animation would apply */
     box-shadow:
       0 0 55px #187a56,
       0 0 100px #fff;
