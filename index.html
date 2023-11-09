@@ -16,17 +16,11 @@
   <div class="box">
     <select onchange="setSelection1(this.value)">
       <option>Select Product</option>
-      <option>Apple</option>
-      <option>Orange</option>
-      <option>Lemon</option>
     </select>
   </div>
   <div class="box2">
     <select onchange="setSelection2(this.value)">
       <option>Select Location</option>
-      <option>Box 1</option>
-      <option>Box 2</option>
-      <option>Box 3</option>
     </select>
   </div>
   </div>
@@ -36,19 +30,9 @@
     </div>
     <div class="selection2" </div>
     </div>
-    <script>
-      function setSelection2(value) {
-        const selection2 = document.querySelector(".selection2");
-        selection2.innerText = value;
-      }
-      function setSelection1(value) {
-        const selection1 = document.querySelector(".selection1");
-        selection1.innerText = value;
-      }
-    </script>
     <div class="product">You want to send:</div>
     <div class="location"> To:</div>
-    <a href="#" class="order"> Confirm Order </a> /* Setting temporarily this from button back to link following because the sizing got messed up */
+    <a href="#" class="order"> Confirm Order </a>
 </body>
-
+<script src="script.js"></script>
 </html>
