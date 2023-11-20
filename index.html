@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<!DOCTYPE html>
+<html>
 
 <head>
   <style>
@@ -13,26 +15,31 @@
 
 <body>
   <div class="header"> Warehouse Delivery </div>
-  <div class="box">
-    <select onchange="setSelection1(this.value)">
-      <option>Select Product</option>
-    </select>
-  </div>
-  <div class="box2">
-    <select onchange="setSelection2(this.value)">
-      <option>Select Location</option>
-    </select>
+  <form id="orderForm" action="insertOrder.php" method="post">
+  <div class="flex-container">
+    <div class="box">
+      <select id="productSelect" name="selection1" onchange="setSelection1(this.value)">
+        <option>Select Product</option>
+      </select>
+    </div>
+    <div class="box2">
+      <select id="locationSelect" name="selection2" onchange="setSelection2(this.value)">
+        <option>Select Location</option>
+      </select>
+    </div>
   </div>
   </div>
   <div class="line"></div>
   <div class="white-box">
     <div class="selection1" </div>
-    </div>
+  </div>
     <div class="selection2" </div>
     </div>
     <div class="product">You want to send:</div>
     <div class="location"> To:</div>
-    <a href="#" class="order"> Confirm Order </a>
+    <button type="submit" id="confirmOrderButton" class="order">Confirm Order</button>
+    </form>
 </body>
 <script src="script.js"></script>
+
 </html>
