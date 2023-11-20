@@ -1,60 +1,48 @@
-<?PHP
+<?php
 
-class WarehouseDatabase{
-    private static $conn = null;
+class WarehouseDatabase {
+    private static $connection;
 
-    private static function connect() {
-        global $servername, $database, $username, $password;
-
-        if (self::$conn === null) {
-            try {
-                self::$conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                echo "Connection failed: " . $e->getMessage();
-                http_response_code(500);
-                exit();
-            }
+    public static function connect() {
+        // Assume $dbhost, $dbuser, $dbpass, and $dbname are defined in db_config.php
+        // which is included in insertOrder.php before the instantiation of WarehouseDatabase.
+        include "db_config.php"; // Including database configuration
+        try {
+            self::$connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+            // Set the PDO error mode to exception
+            self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            throw new Exception("Connection failed: " . $e->getMessage());
         }
     }
 
-    public static function getDataFromSQL($sql,$params=null){
-        self::connect();
-        
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute($params);
-        //$stmt->execute();
-        
-        // set the resulting array to associative
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $valuesArray = $stmt->fetchAll();
-        return $valuesArray;
-    }
-
-    public static function executeSQL($sql,$params=null,$returnID=false){
-        self::connect();
-        
-        $stmt = self::$conn->prepare($sql);
-        $stmt->execute($params);
-
-        if ($returnID) {
-            return self::$conn->lastInsertId();
-        } else {
-            return true;
+    public static function executeSQL($sql, $params = []) {
+        try {
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute($params);
+            return $stmt;
+        } catch(PDOException $e) {
+            throw new Exception("Database error: " . $e->getMessage());
         }
     }
 
     public static function startTransaction() {
-        self::connect();
-        self::$conn->beginTransaction();
+        self::$connection->beginTransaction();
     }
 
     public static function commitTransaction() {
-        self::$conn->commit();
+        self::$connection->commit();
     }
 
     public static function rollbackTransaction() {
-        self::$conn->rollback();
+        self::$connection->rollBack();
     }
+
+    public static function getLastInsertedId() {
+        return self::$connection->lastInsertId();
+    }
+
+    // Add any other methods relevant to the WarehouseDatabase operations here
 }
+
 ?>
