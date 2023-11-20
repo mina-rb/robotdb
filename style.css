@@ -1,78 +1,56 @@
 * {
   font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+}
+
+.product,
+.location {
+  display: none; /* Hide by default */
 }
 
 html {
   background-color: #0A2240;
-  height: 100%;
   width: 100%;
 }
 
 .header {
-  font-size: 100px;
+  font-size: 2.5rem;
   flex: 70%;
   background: #004B98;
-  padding: 50px;
+  padding: 20px;
   color: white;
-}
-
-.box {                /* Both box commands create and update the selection form menu for product and location */
-  position: absolute;
-  top: 450px;
-  left: 300px;
-  transform: translate(-50%, -50%);
-}
-
-.box select {
-  border-radius: 30px;
-  background-color: #004B98;
-  color: white;
-  padding: 40px;
-  width: 300px;
-  border: none;
-  font-size: 25px;
-  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.4);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
-}
-
-.box::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20;
-  height: 100%;
   text-align: center;
-  font-size: 20px;
-  color: rgba(255, 2555, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.2);
-  pointer-events: none;
 }
 
-.box:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.4);
+.flex-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.box select option {
-  border-radius: 30px;
-  padding: 30px;
+.box,
+.box2 {
+  position: relative;
+  width: calc(20% - 10px); /* Shorter width for .box */
+  margin-top: 10%; /* Lower down .box */
+}
+
+.box {
+  margin-right: 15%; /* Move .box to the left */
 }
 
 .box2 {
-  position: absolute;
-  top: 450px;
-  left: 800px;
-  transform: translate(-50%, -50%);
+  margin-right: 40%; /* Increased margin-right to move .box2 more to the right */
 }
 
+.box select,
 .box2 select {
   border-radius: 30px;
   background-color: #004B98;
   color: white;
   padding: 40px;
-  width: 300px;
+  width: 100%;
   border: none;
   font-size: 25px;
   box-shadow: 0 5px 2px rgba(0, 0, 0, 0.4);
@@ -81,8 +59,9 @@ html {
   outline: none;
 }
 
+.box::before,
 .box2::before {
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   width: 20;
@@ -94,107 +73,276 @@ html {
   pointer-events: none;
 }
 
+.box:hover::before,
 .box2:hover::before {
   color: rgba(255, 255, 255, 0.6);
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+.box select option,
 .box2 select option {
   border-radius: 30px;
   padding: 30px;
 }
 
-.line {                             /* Cosmetically used to seperate space between selection and order confirmation */
-  position: fixed;
-  top: 20%;
-  bottom: 0;
-  left: 65%;
-  width: 2px;
-  height: 200%;
-  background: transparent;
-  border-left: dotted 2px #004B98;
-  transform: translateX(-50%);
-}
+@media (max-width: 767px) {
+  .flex-container {
+    flex-direction: column;
+  }
 
-.white-box {
-  position: absolute;
-  top: 30%;
-  right: 4%;
-  width: 500px;
-  height: 600px;
-  background-color: #ebeff5;
-  border-radius: 30px;
-}
+  .selection1,
+  .selection2{
+    display: none;
+  }
 
-.selection1 {               /* Created boxes for selection 1 and 2, that will display on the side the selection you chose from the boxes for product and locatiom */
-  position: absolute;
-  top: 28%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  background-color: #004B98;
-  color: white;
-  font-size: 20px;
-  border-radius: 30px;
-  padding: 30px;
-}
+  .box,
+  .box2 {
+    width: 80%;
+    margin-top: 20px;
+    margin-right: auto; /* Center on phones */
+    margin-left: auto; /* Center on phones */
+  }
 
-.selection2 {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  background-color: #004B98;
-  color: white;
-  font-size: 20px;
-  border-radius: 30px;
-  padding: 30px;
-}
-
-.product {                         /* Displays product and location texts "You want to send: and "To:" */
-  position: absolute;
-  top: 15%;
-  left: 20%;
-  font-size: 25px;
-  color: #0A2240;
-}
-
-.location {                
-  position: absolute;
-  top: 40%;
-  left: 20%;
-  font-size: 25px;
-  color: #0A2240;
+  .order {
+    display: inline-block; /* Set to inline-block to align with .box */
+    width: 80%; /* Keep consistent width for mobile */
+    padding: 10px; /* Adjust padding if needed */
+    margin-left: auto; /* Center on phones */
+    margin-right: auto; /* Center on phones */
+  }
 }
 
 .order {
-  color: #fff;
-  position: absolute;
-  top: 80%;
-  left: 28%;
-  display: inline-block;
   background-color: #E1261C;
-  text-decoration: none;
-  padding: 20px 50px;
-  border: 3px solid #E1261C;
+  color: white;
   border-radius: 30px;
+  border: none;
+  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.4);
+  appearance: none;
+  font-size: 25px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  display: block;
+  margin: 20px auto;
+  width: calc(50% + 40px); /* Larger width on desktop */
+  padding: 20px 40px; /* Larger padding on desktop */
 }
 
 .order:hover {
-  animation: pulsate 1s infinite;   /* The purpose of infinite is to ensure the glowing animation does not fade out during hover */
+  animation: pulsate 1s infinite;
 }
 
 @keyframes pulsate {
   0% {
-    box-shadow:
-      0 0 55px #c72118,
-      0 0 100px #fff;
+    box-shadow: 0 0 55px #c72118, 0 0 100px #fff;
+  }
+  100% {
+    box-shadow: 0 0 55px #c72118, 0 0 100px #fff;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    font-size: 4rem;
+    padding: 40px;
+  }
+  .flex-container {
+    flex-direction: column;
   }
 
-  100% {                          /* Added later to make sure the infinite animation would apply */
-    box-shadow:
-      0 0 55px #c72118,
-      0 0 100px #fff;
+  .selection1,
+  .selection2{
+    display: none;
   }
+
+  .box,
+  .box2 {
+    width: 80%;
+    margin-top: 20px;
+    margin-right: auto; /* Center on phones */
+    margin-left: auto; /* Center on phones */
+  }
+  .order {
+    display: inline-block; 
+    width: 60%; 
+    margin: 20px auto 20px 20px; /* Sets top and bottom margins to 20px, left margin to 20px, and right margin to auto */
+      padding: 10px;
+      /* Adjust the left margin to push the button more towards the right */
+      margin-left: calc((100% - 60%) / 2); /* This will push the button towards the right side */
+    }
+  
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) { /*laptop size */
+  .header {
+    font-size: 4rem;
+    padding: 50px;
+  }
+
+  .box,
+  .box2 {
+    width: 50%;
+    margin-top: 20px;
+    margin-right: auto; /* Center on phones */
+    margin-left: auto; /* Center on phones */
+  }
+  .box{
+    margin-left: 0;
+  }
+  .box2{
+    margin-left: 0;
+  }
+
+  .product,
+  .location {
+    display: block;
+  }
+
+  .order {
+    color: #fff;
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    display: inline-block;
+    background-color: #E1261C;
+    text-decoration: none;
+    padding: 20px 60px;
+    border: 3px solid #E1261C;
+    border-radius: 30px;
+    width: calc(70% + 40px); /* Larger width on desktop */
+    cursor: pointer;
+  }
+
+  .white-box {
+    position: absolute;
+    top: 33%;
+    right: 4%;
+    width: 400px;
+    height: 400px;
+    background-color: #ebeff5;
+    border-radius: 30px;
+  }
+
+  .selection1 {               /* Created boxes for selection 1 and 2, that will display on the side the selection you chose from the boxes for product and locatiom */
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #004B98;
+    color: white;
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 30px;
+  }
+
+  .selection2 {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #004B98;
+    color: white;
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 30px;
+  }
+
+  .product {                         /* Displays product and location texts "You want to send: and "To:" */
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    font-size: 25px;
+    color: #0A2240;
+  }
+
+  .location {                
+    position: absolute;
+    top: 37%;
+    left: 20%;
+    font-size: 25px;
+    color: #0A2240;
+  }
+
+}
+@media (min-width: 1441px) {
+  .header {
+    font-size: 6rem;
+    padding: 50px;
+  }
+
+  .product,
+  .location {
+    display: block;
+  }
+
+  .order {
+    color: #fff;
+    position: absolute;
+    top: 75%;
+    left: 22%;
+    display: inline-block;
+    background-color: #E1261C;
+    text-decoration: none;
+    padding: 20px 60px;
+    border: 3px solid #E1261C;
+    border-radius: 30px;
+    width: 300px;
+    cursor: pointer;
+  }
+
+  .white-box {
+    position: absolute;
+    top: 33%;
+    right: 4%;
+    width: 500px;
+    height: 500px;
+    background-color: #ebeff5;
+    border-radius: 30px;
+  }
+
+  .selection1 {               /* Created boxes for selection 1 and 2, that will display on the side the selection you chose from the boxes for product and locatiom */
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #004B98;
+    color: white;
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 30px;
+  }
+
+  .selection2 {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #004B98;
+    color: white;
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 30px;
+  }
+
+  .product {                         /* Displays product and location texts "You want to send: and "To:" */
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    font-size: 25px;
+    color: #0A2240;
+  }
+
+  .location {                
+    position: absolute;
+    top: 38%;
+    left: 20%;
+    font-size: 25px;
+    color: #0A2240;
+  }
+
 }
